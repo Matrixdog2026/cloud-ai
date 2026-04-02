@@ -1,0 +1,13 @@
+{
+  "name": "cloud-ai-o3",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.0",
+    "cors": "^2.8.5",
+    "openai": "^4.0.0",
+    "mongoose": "^7.6.0"
+  }
+}

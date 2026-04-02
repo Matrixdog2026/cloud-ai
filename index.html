@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud AI Tool</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        #output {
+            white-space: pre-wrap;
+            background: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cloud AI Interface</h1>
+
+<input id="input" placeholder="Ask your AI..." style="width:80%; padding:10px;">
+<button onclick="send()">Send</button>
+
+<div id="output"></div>
+
+<script>
+async function send() {
+    const text = document.getElementById("input").value;
+
+    const res = await fetch("http://localhost:8000/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+    });
+
+    const data = await res.json();
+    document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
