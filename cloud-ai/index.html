@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud AI</title>
+</head>
+<body>
+    <h2>Cloud AI (o3 Deep Learning)</h2>
+
+    <textarea id="msg"></textarea>
+    <button onclick="chat()">Send</button>
+
+    <div id="out"></div>
+
+<script>
+async function chat() {
+    const message = document.getElementById("msg").value;
+
+    const res = await fetch("https://YOUR-SERVER.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userId: "user-001",
+            message
+        })
+    });
+
+    const data = await res.json();
+    document.getElementById("out").innerHTML = data.reply;
+}
+</script>
+
+</body>
+</html>
